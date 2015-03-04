@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printlnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 16:03:51 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/03/02 23:32:10 by jdelmar          ###   ########.fr       */
+/*   Created: 2015/03/03 21:33:27 by jdelmar           #+#    #+#             */
+/*   Updated: 2015/03/03 22:26:26 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+char	*ft_printlnbr(char *buff, va_list ap, int *len)
 {
-	write(1, s, ft_strlen(s));
+	long	n;
+
+	n = va_arg(ap, long);
+	*len += ft_convert(buff, n, 10, 0);
+	return (buff + *len);
 }

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printaddr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 16:03:51 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/03/02 23:32:10 by jdelmar          ###   ########.fr       */
+/*   Created: 2015/03/02 19:51:05 by jdelmar           #+#    #+#             */
+/*   Updated: 2015/03/04 20:24:54 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+char	*ft_printptr(char *buff, va_list ap, int *len)
 {
-	write(1, s, ft_strlen(s));
+	unsigned long	addr;
+
+	*buff++ = '0';
+	*buff++ = 'x';
+	*len += 2;
+	addr = va_arg(ap, unsigned long);
+	*len += ft_convert(buff + 2, addr, 16, 0);
+	return (buff + *len);
 }

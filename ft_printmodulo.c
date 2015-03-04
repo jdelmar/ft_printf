@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printmodulo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 16:03:51 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/03/02 23:32:10 by jdelmar          ###   ########.fr       */
+/*   Created: 2015/03/03 17:08:38 by jdelmar           #+#    #+#             */
+/*   Updated: 2015/03/03 17:12:42 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+char	*ft_printmodulo(char *buff, va_list ap, int *len)
 {
-	write(1, s, ft_strlen(s));
+	*buff = '%';
+	*len++;
+	(void)ap;
+	return (buff + 1);
 }

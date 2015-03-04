@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printuphexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 16:03:51 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/03/02 23:32:10 by jdelmar          ###   ########.fr       */
+/*   Created: 2015/03/02 19:25:15 by jdelmar           #+#    #+#             */
+/*   Updated: 2015/03/04 16:48:36 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char const *s)
+char	*ft_printuphexa(char *buff, va_list ap, int *len)
 {
-	write(1, s, ft_strlen(s));
+	unsigned int	hex;
+	int				i;
+
+	hex = va_arg(ap, unsigned long);
+	i = ft_unsigned_convert(buff, hex, 16, 1);
+	*len += i;
+	return (buff + i);
 }

@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/18 19:21:28 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/02/26 16:37:57 by jdelmar          ###   ########.fr       */
+/*   Created: 2015/03/03 22:01:27 by jdelmar           #+#    #+#             */
+/*   Updated: 2015/03/04 17:37:15 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_printchar(char *buff, va_list ap, int *len)
+int		ft_convert(char *buff, long n, int b, int maj)
 {
-	char	c;
+	char			base[b + 1];
+	int				i;
+	int				tmp;
 
-	c = va_arg(ap, int);
-	*buff = c;
-	*len = *len + 1;
-	return (buff + 1);
+	i = -1;
+	while (++i < b)
+		if (i < 10)
+			base[i] = '0' + i;
+		else
+			base[i] = (maj ? 'A' : 'a') + i - 10;
+	i = 0;
+	tmp = n;
+	while (tmp >= b)
+	{
+		tmp /= b;
+		i++;
+	}
+	buff[i + 1] = 0;
+	while (n >= b)
+	{
+		buff[i--] = base[n % b];
+		n /= b;
+	}
+	buff[i] = base[n % b];
+	return (ft_strlen(buff));
 }

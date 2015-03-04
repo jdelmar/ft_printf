@@ -6,7 +6,7 @@
 /*   By: jdelmar <jdelmar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 16:53:14 by jdelmar           #+#    #+#             */
-/*   Updated: 2015/02/20 17:00:44 by jdelmar          ###   ########.fr       */
+/*   Updated: 2015/02/25 19:24:59 by jdelmar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		nbr_bits(unsigned int nbr)
 {
-	int     i;
+	int	i;
 
 	i = 1;
 	while ((nbr = nbr >> 1))
@@ -22,10 +22,10 @@ int		nbr_bits(unsigned int nbr)
 	return (i);
 }
 
-void    ft_putwchart(wchar_t wchar, int *len, char *buff, int i)
+void	ft_putwchart(wchar_t wchar, int *len, char *buff, int i)
 {
-	unsigned int    ch;
-	int             n;
+	unsigned int	ch;
+	int				n;
 
 	ch = (unsigned int)wchar;
 	n = nbr_bits(ch);
